@@ -9,22 +9,20 @@ public class Conta {
     private double saldo;
     private List<Compra> compras;
 
-    public Conta (String titular, double limite){
+    public Conta(String titular, double limite) {
         this.titular = titular;
         this.limite = limite;
         this.saldo = limite;
-        this.compras = new ArrayList<Compra>();
+        compras = new ArrayList<Compra>();
     }
 
-    public void mostraInfo(){
-        String infoTitular = """
-                \n******************************* \nTitular: %s \nSaldo: R$%.2f \n*******************************
-                """.formatted(titular,saldo);
-        System.out.println(infoTitular);
+    public void mostraInfo() {
+        String info = "\n*******************************\nTitular: %s \nSaldo: R$%.2f \n******************************* \n".formatted(titular,saldo);
+        System.out.println(info);
     }
 
-    public boolean lancaCompra(Compra compra) {
-        if(this.saldo > compra.getValor()){
+    public boolean validaCompra (Compra compra) {
+        if (this.saldo > compra.getValor()) {
             this.saldo -= compra.getValor();
             this.compras.add(compra);
             return true;
@@ -32,6 +30,7 @@ public class Conta {
 
         return false;
     }
+
 
     public double getSaldo() {
         return saldo;

@@ -9,12 +9,6 @@ public class Compra implements Comparable<Compra>{
         this.valor = valor;
     }
 
-    @Override
-    public String toString() {
-        String texto = "Produto: %s - R$%.2f".formatted(descricao,valor);
-        return texto;
-    }
-
     public String getDescricao() {
         return descricao;
     }
@@ -24,10 +18,16 @@ public class Compra implements Comparable<Compra>{
     }
 
     @Override
+    public String toString() {
+        String texto = "Produto: %s - R$%.2f".formatted(descricao,valor);
+        return texto;
+    }
+
+    @Override
     public int compareTo(Compra outraCompra) {
-        if (this.valor > outraCompra.getValor()) {
+        if (this.valor > outraCompra.valor) {
             return -1;
-        } else if (this.valor < outraCompra.getValor()) {
+        } else if (this.valor < outraCompra.valor) {
             return 1;
         } else {
             return 0;
